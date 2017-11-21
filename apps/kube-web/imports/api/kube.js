@@ -49,6 +49,9 @@ if (Meteor.isServer) {
       return fut.wait();
       */
       return ctl.index();
-    }
+    },
+    'kube.create'() {ctl.create()},
+    'kube.delete'() {ctl.delete()},
+    'kube.scale'(replicas) {ctl.scale(replicas)}
   });
 }

@@ -13,19 +13,35 @@ export default class App extends React.Component {
       test: 'init'
     };
     this.refreshClick = this.refreshClick.bind(this);
+    this.createClick = this.createClick.bind(this);
+    this.deleteClick = this.deleteClick.bind(this);
+    this.scaleClick = this.scaleClick.bind(this);
 
-    this.refreshData();
+    this.refreshKube();
   }
 
-  refreshData() {
+  refreshKube() {
     Meteor.call('kube.index', (error, result) => {
       this.setState({test: result.kind});
     });
   }
 
-  refreshClick() {
-    this.refreshData();
+  createKube() {
+    Meteor.call('kube.create', (error, result) => {})
   }
+
+  deleteKube() {
+    Meteor.call('kube.delete', (error, result) => {})
+  }
+
+  scaleKube() {
+    Meteor.call('kube.scale', 1, (error, result) => {});
+  }
+
+  refreshClick() {this.refreshKube()}
+  createClick()  {this.createKube()}
+  deleteClick()  {this.deleteKube()}
+  scaleClick()   {this.scaleKube()}
 
   render() {
     return (
@@ -37,6 +53,9 @@ export default class App extends React.Component {
         <div>
           <button onClick={this.refreshClick}>Refresh</button>
           <div>test = {this.state.test}</div>
+          <button onClick={this.createClick}>Create</button>
+          <button onClick={this.deleteClick}>Delete</button>
+          <button onClick={this.scaleClick}>Scale</button>
         </div>
       </div>
     );
