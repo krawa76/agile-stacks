@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/krawa76/agile-stacks/issues"
   },
-  "homepage": "https://github.com/krawa76/agile-stacks#readme"
+  "homepage": "https://github.com/krawa76/agile-stacks#readme",
+  "dependencies": {
+    "k8s": "^0.4.15"
+  }
 }

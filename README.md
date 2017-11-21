@@ -1,3 +1,7 @@
 # agile-stacks
 
-$ kubectl expose deployment web --type=LoadBalancer --port 80 --target-port 3000
+### Console app
+
+```
+ENDPOINT=https://x.x.x.x USERNAME=username PASSWORD=password node apps/console/index.js delete
+```
