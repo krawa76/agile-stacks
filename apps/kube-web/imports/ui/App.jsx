@@ -3,18 +3,28 @@
 import React from 'react';
 import {Meteor} from 'meteor/meteor';
 
-//import {Kube} from '../api/kube.js';
+//import {Kube} from '../api/kube.js'; -- stubs
 
 export default class App extends React.Component {
   constructor(props) {
     super(props);
-    this.testButton = this.testButton.bind(this);
+
+    this.state = {
+      test: 'init'
+    };
+    this.refreshClick = this.refreshClick.bind(this);
+
+    this.refreshData();
   }
 
-  testButton() {
-    Meteor.call('test', 'asdfasdf', (error, result) => {
-      console.log(result);
+  refreshData() {
+    Meteor.call('kube.index', (error, result) => {
+      this.setState({test: result.kind});
     });
+  }
+
+  refreshClick() {
+    this.refreshData();
   }
 
   render() {
@@ -25,7 +35,8 @@ export default class App extends React.Component {
         </header>
 
         <div>
-          <button onClick={this.testButton}>Test</button>
+          <button onClick={this.refreshClick}>Refresh</button>
+          <div>test = {this.state.test}</div>
         </div>
       </div>
     );

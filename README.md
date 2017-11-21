@@ -19,5 +19,5 @@ $ ENDPOINT=https://x.x.x.x USERNAME=username PASSWORD=password node apps/console
 ### Deployment
 
 ```
-$ DEPLOY_HOSTNAME=us-east-1.galaxy-deploy.meteor.com meteor deploy --settings production-settings.json agile-stacks.meteorapp.com
+$ DEPLOY_HOSTNAME=us-east-1.galaxy-deploy.meteor.com meteor deploy --settings production.json agile-stacks.meteorapp.com
 ```
