@@ -10,12 +10,14 @@ export default class App extends React.Component {
     super(props);
 
     this.state = {
-      test: 'init'
+      test: 'init',
+      replicas: 1,
     };
     this.refreshClick = this.refreshClick.bind(this);
     this.createClick = this.createClick.bind(this);
     this.deleteClick = this.deleteClick.bind(this);
     this.scaleClick = this.scaleClick.bind(this);
+    this.replicasChange = this.replicasChange.bind(this);
 
     this.refreshKube();
   }
@@ -35,13 +37,17 @@ export default class App extends React.Component {
   }
 
   scaleKube() {
-    Meteor.call('kube.scale', 1, (error, result) => {});
+    Meteor.call('kube.scale', this.state.replicas, (error, result) => {});
   }
 
   refreshClick() {this.refreshKube()}
   createClick()  {this.createKube()}
   deleteClick()  {this.deleteKube()}
   scaleClick()   {this.scaleKube()}
+
+  replicasChange(event) {
+    this.setState({replicas: event.target.value});
+  }
 
   render() {
     return (
@@ -55,7 +61,8 @@ export default class App extends React.Component {
           <div>test = {this.state.test}</div>
           <button onClick={this.createClick}>Create</button>
           <button onClick={this.deleteClick}>Delete</button>
-          <button onClick={this.scaleClick}>Scale</button>
+          <input type="text" value={this.state.replicas} onChange={this.replicasChange}/>
+          <button onClick={this.scaleClick}>Scale (max = 5)</button>
         </div>
       </div>
     );

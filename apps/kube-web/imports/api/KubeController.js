@@ -67,6 +67,13 @@ class KubeController {
     }
     catch(e) {console.log(e)}
   }
+
+  async scale(replicas) {
+    try {
+      await _scale(replicas);
+    }
+    catch(e) {console.log(e)}
+  }
 }
 
 export default KubeController;
