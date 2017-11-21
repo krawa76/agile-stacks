@@ -14,7 +14,8 @@ const apiConfig = {
   }
 };
 
-const label = 'web';
+const label       = 'web';
+const maxReplicas = 5;
 
 //==============================================================================
 const apiExtConfig = JSON.parse(JSON.stringify(apiConfig));
@@ -25,6 +26,8 @@ const apiExt = k8s.api(apiExtConfig);
 
 //==============================================================================
 function scale(replicas) {
+  if (replicas > maxReplicas) throw `Exceeds replicas max number (${maxReplicas})`;
+
   console.log(`scaling to ${replicas}`);
 
   const d = new deployment;
