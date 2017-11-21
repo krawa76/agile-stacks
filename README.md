@@ -4,7 +4,7 @@
 
 * /apps/web - the containerized simple Node.js web server with Dockerfile and Kubernetes manifest.
 * /apps/console - the console app which shows, creates, deletes, and scales Kubernetes deployments.
-* /apps/#shared - the Kubernetes deployment manifest.
+* /apps/#shared - the Kubernetes manifests: deployment, service.
 
 ### Console App
 
