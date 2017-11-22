@@ -1,10 +1,21 @@
 # agile-stacks
 
+Demo application:
+
+[http://agile-stacks.meteorapp.com/](http://agile-stacks.meteorapp.com/)
+
 ### Project Structure
 
 * /apps/web - the containerized simple Node.js web server with Dockerfile and Kubernetes manifest.
 * /apps/console - the console Node.js app which uses Kubernetes RESTful API to show, create, delete, and scale Kubernetes deployments.
+* /apps/kube-web - Kubernetes API web app demo: Meteor.js & React.js.  
 * /apps/#shared - the Kubernetes manifests: deployment, service.
+
+### Main Modules
+
+* [Kubernetes API controller](apps/kube-web/imports/api/KubeController.js)
+* [React.js application](apps/kube-web/imports/ui/App.jsx)
+* [Kubernetes manifest](apps/kube-web/imports/data.js)
 
 ### Console App
 
