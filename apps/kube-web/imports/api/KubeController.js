@@ -38,8 +38,15 @@ function _scale(replicas) {
 
 class KubeController {
   async index() {
+    const res = {};
+
     try {
-      return await apiExt.get('namespaces/default/deployments');
+      res.deployments = await apiExt.get('namespaces/default/deployments');
+      res.replicaSets = await apiExt.get('namespaces/default/replicasets');
+      res.pods        = await api.get('namespaces/default/pods');
+      res.services    = await api.get(`namespaces/default/services?labelSelector=run%3D${label}`);
+
+      return res;
     }
     catch(e) {console.log(e)}
   }
